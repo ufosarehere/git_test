@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+        }
+
+        #content {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            width: 200px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Access Code</h1>
+    <input type="password" id="accessCode" placeholder="Enter access code" />
+    <button onclick="checkAccess()">Submit</button>
+    <div class="error" id="errorMsg"></div>
+
+    <div id="content">
+        <h2>Protected Content</h2>
+        <p>This is the content that is protected by an access code.</p>
+    </div>
+
+    <script>
+        function checkAccess() {
+            const code = document.getElementById('accessCode').value;
+            const correctCode = "12345"; // Replace with your access code
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (code === correctCode) {
+                document.getElementById('content').style.display = 'block';
+                errorMsg.textContent = ""; // Clear any previous error message
+            } else {
+                errorMsg.textContent = "Incorrect access code. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
